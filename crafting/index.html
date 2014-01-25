@@ -1,0 +1,152 @@
+---
+layout: default
+title: Green Mod - Crafting recipes
+base_url: "../"
+---
+<div id="top">
+  <ol class="quicknav">
+    <li><a href="#sawblade">Sawblade</a></li>
+    <li><a href="#pruningsaw">Pruning Saw</a></li>
+    <li><a href="#vanilla-tools">Vanilla tools</a></li>
+    <li><a href="#basalt-marble">Basalt & Marble</a></li>
+    <li><a href="#misc">Misc</a></li>
+  </ol>
+</div>
+<div id="sawblade"><h1>Sawblade</h1></div>
+<table class="recipetable">
+  <tbody>
+{% assign i = 0 %}
+{% for craft in site.data.cr-sawblade %}
+    <tr>
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+      </td>
+{% for craft in site.data.cr-sawblade-alt limit:1 offset:i %}
+{% capture i %}{{ i | plus:1 }}{% endcapture %}
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+{% endfor %}
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+
+<div id="pruningsaw"><h1>Pruning Saw</h1></div>
+<table class="recipetable">
+  <tbody>
+{% assign i = 0 %}
+{% for craft in site.data.cr-saw %}
+    <tr>
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+      </td>
+{% for craft in site.data.cr-saw-alt limit:1 offset:i %}
+{% capture i %}{{ i | plus:1 }}{% endcapture %}
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+{% endfor %}
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+
+<div id="vanilla-tools"><h1>Vanilla tools</h1></div>
+<table class="recipetable">
+  <tbody>
+{% assign i = 0 %}
+{% for craft in site.data.cr-tool %}
+    <tr>
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+      </td>
+{% for craft in site.data.cr-tool-alt limit:1 offset:i %}
+{% capture i %}{{ i | plus:1 }}{% endcapture %}
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+{% endfor %}
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+
+<div id="basalt-marble"><h1>Basalt & Marble</h1></div>
+<table class="recipetable">
+  <tbody>
+{% assign i = 0 %}
+{% for craft in site.data.cr-basalt %}
+    <tr>
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+      </td>
+{% for craft in site.data.cr-marble limit:1 offset:i %}
+{% capture i %}{{ i | plus:1 }}{% endcapture %}
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+{% endfor %}
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+
+<div id="misc"><h1>Misc</h1></div>
+<table class="recipetable">
+  <tbody>
+{% assign i = 0 %}
+{% for craft in site.data.cr-misc %}
+    <tr>
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+      </td>
+{% for craft in site.data.cr-misc-alt limit:1 offset:i %}
+{% capture i %}{{ i | plus:1 }}{% endcapture %}
+      <td style="float:left">
+{% if craft.type == "furnace"> %}
+{% include furnace.html %}
+{% elsif craft.type == "crafting-table" %}
+{% include crafting-table.html %}
+{% endif %}
+{% endfor %}
+    </tr>
+{% endfor %}
+  </tbody>
+</table>

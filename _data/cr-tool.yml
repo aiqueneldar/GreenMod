@@ -1,0 +1,55 @@
+- type: crafting-table
+  out: items/item.greenmod.axe.ruby
+  out-a: Ruby Axe
+  c1: items/item.greenmod.gem.ruby
+  c1-a: Ruby
+  c2: items/item.greenmod.gem.ruby
+  c2-a: Ruby
+  c4: items/item.greenmod.gem.ruby
+  c4-a: Ruby
+  c5: stick
+  c5-a: Stick
+  c8: stick
+  c8-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.hoe.ruby
+  out-a: Ruby Hoe
+  c1: items/item.greenmod.gem.ruby
+  c1-a: Ruby
+  c2: items/item.greenmod.gem.ruby
+  c2-a: Ruby
+  c5: stick
+  c5-a: Stick
+  c8: stick
+  c8-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.pickaxe.ruby
+  out-a: Ruby Pickaxe
+  c1: items/item.greenmod.gem.ruby
+  c1-a: Ruby
+  c2: items/item.greenmod.gem.ruby
+  c2-a: Ruby
+  c3: items/item.greenmod.gem.ruby
+  c3-a: Ruby
+  c5: stick
+  c5-a: Stick
+  c8: stick
+  c8-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.shovel.ruby
+  out-a: Ruby Shovel
+  c2: items/item.greenmod.gem.ruby
+  c2-a: Ruby
+  c5: stick
+  c5-a: Stick
+  c8: stick
+  c8-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.sword.ruby
+  out-a: Ruby Sword
+  c2: items/item.greenmod.gem.ruby
+  c2-a: Ruby
+  c5: items/item.greenmod.gem.ruby
+  c5-a: Ruby
+  c8: stick
+  c8-a: Stick

@@ -1,0 +1,23 @@
+- type: crafting-table
+  out: items/item.greenmod.sawblade.iron
+  out-a: Iron Sawblade
+  c2: iron_ingot
+  c2-a: Iron Ingot
+  c3: iron_ingot
+  c3-a: Iron Ingot
+  c4: iron_ingot
+  c4-a: Iron Ingot
+  c5: iron_ingot
+  c5-a: Iron Ingot
+- type: crafting-table
+  out: items/item.greenmod.sawblade.sapphire
+  out-a: Sapphire Sawblade
+  c2: iron_ingot
+  c2-a: Iron Ingot
+  c3: items/item.greenmod.gem.sapphire
+  c3-a: Sapphire
+  c4: iron_ingot
+  c4-a: Iron Ingot
+  c5: items/item.greenmod.gem.sapphire
+  c5-a: Sapphire
+

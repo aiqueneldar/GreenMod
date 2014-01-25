@@ -1,0 +1,27 @@
+- type: crafting-table
+  out: blocks/ruby_block
+  out-a: Ruby Block
+  c1: items/item.greenmod.gem.ruby
+  c1-a: Ruby
+  c2: items/item.greenmod.gem.ruby
+  c2-a: Ruby
+  c3: items/item.greenmod.gem.ruby
+  c3-a: Ruby
+  c4: items/item.greenmod.gem.ruby
+  c4-a: Ruby
+  c5: items/item.greenmod.gem.ruby
+  c5-a: Ruby
+  c6: items/item.greenmod.gem.ruby
+  c6-a: Ruby
+  c7: items/item.greenmod.gem.ruby
+  c7-a: Ruby
+  c8: items/item.greenmod.gem.ruby
+  c8-a: Ruby
+  c9: items/item.greenmod.gem.ruby
+  c9-a: Ruby
+- type: crafting-table
+  out: items/item.greenmod.gem.ruby
+  out-a: Ruby
+  out-n: 9
+  c5: blocks/ruby_block
+  c5-a: Ruby Block

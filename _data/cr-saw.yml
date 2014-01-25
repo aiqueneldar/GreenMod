@@ -1,0 +1,52 @@
+- type: crafting-table
+  out: items/item.greenmod.pruningsaw.diamond
+  out-a: Diamond Pruning Saw
+  c2: iron_ingot
+  c2-a: Iron Ingot
+  c3: diamond
+  c3-a: Diamond
+  c4: iron_ingot
+  c4-a: Iron Ingot
+  c5: diamond
+  c5-a: Diamond
+  c7: stick
+  c7-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.pruningsaw.iron
+  out-a: Iron Pruning Saw
+  c2: iron_ingot
+  c2-a: Iron Ingot
+  c3: iron_ingot
+  c3-a: Iron Ingot
+  c4: iron_ingot
+  c4-a: Iron Ingot
+  c5: iron_ingot
+  c5-a: Iron Ingot
+  c7: stick
+  c7-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.pruningsaw.ruby
+  out-a: Ruby Pruning Saw
+  c2: iron_ingot
+  c2-a: Iron Ingot
+  c3: items/item.greenmod.gem.ruby
+  c3-a: Ruby
+  c4: iron_ingot
+  c4-a: Iron Ingot
+  c5: items/item.greenmod.gem.ruby
+  c5-a: Ruby
+  c7: stick
+  c7-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.pruningsaw.sapphire
+  out-a: Sapphire Pruning Saw
+  c2: iron_ingot
+  c2-a: Iron Ingot
+  c3: items/item.greenmod.gem.sapphire
+  c3-a: Sapphire
+  c4: iron_ingot
+  c4-a: Iron Ingot
+  c5: items/item.greenmod.gem.sapphire
+  c5-a: Sapphire
+  c7: stick
+  c7-a: Stick

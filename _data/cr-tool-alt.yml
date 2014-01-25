@@ -1,0 +1,55 @@
+- type: crafting-table
+  out: items/item.greenmod.axe.sapphire
+  out-a: Sapphire Axe
+  c1: items/item.greenmod.gem.sapphire
+  c1-a: Sapphire
+  c2: items/item.greenmod.gem.sapphire
+  c2-a: Sapphire
+  c4: items/item.greenmod.gem.sapphire
+  c4-a: Sapphire
+  c5: stick
+  c5-a: Stick
+  c8: stick
+  c8-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.hoe.sapphire
+  out-a: Sapphire Hoe
+  c1: items/item.greenmod.gem.sapphire
+  c1-a: Sapphire
+  c2: items/item.greenmod.gem.sapphire
+  c2-a: Sapphire
+  c5: stick
+  c5-a: Stick
+  c8: stick
+  c8-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.pickaxe.sapphire
+  out-a: Sapphire Pickaxe
+  c1: items/item.greenmod.gem.sapphire
+  c1-a: Sapphire
+  c2: items/item.greenmod.gem.sapphire
+  c2-a: Sapphire
+  c3: items/item.greenmod.gem.sapphire
+  c3-a: Sapphire
+  c5: stick
+  c5-a: Stick
+  c8: stick
+  c8-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.shovel.sapphire
+  out-a: Sapphire Shovel
+  c2: items/item.greenmod.gem.sapphire
+  c2-a: Sapphire
+  c5: stick
+  c5-a: Stick
+  c8: stick
+  c8-a: Stick
+- type: crafting-table
+  out: items/item.greenmod.sword.sapphire
+  out-a: Sapphire Sword
+  c2: items/item.greenmod.gem.sapphire
+  c2-a: Sapphire
+  c5: items/item.greenmod.gem.sapphire
+  c5-a: Sapphire
+  c8: stick
+  c8-a: Stick

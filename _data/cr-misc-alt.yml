@@ -1,0 +1,27 @@
+- type: crafting-table
+  out: blocks/sapphire_block
+  out-a: Sapphire Block
+  c1: items/item.greenmod.gem.sapphire
+  c1-a: Sapphire
+  c2: items/item.greenmod.gem.sapphire
+  c2-a: Sapphire
+  c3: items/item.greenmod.gem.sapphire
+  c3-a: Sapphire
+  c4: items/item.greenmod.gem.sapphire
+  c4-a: Sapphire
+  c5: items/item.greenmod.gem.sapphire
+  c5-a: Sapphire
+  c6: items/item.greenmod.gem.sapphire
+  c6-a: Sapphire
+  c7: items/item.greenmod.gem.sapphire
+  c7-a: Sapphire
+  c8: items/item.greenmod.gem.sapphire
+  c8-a: Sapphire
+  c9: items/item.greenmod.gem.sapphire
+  c9-a: Sapphire
+- type: crafting-table
+  out: items/item.greenmod.gem.sapphire
+  out-a: Sapphire
+  out-n: 9
+  c5: blocks/sapphire_block
+  c5-a: Sapphire Block

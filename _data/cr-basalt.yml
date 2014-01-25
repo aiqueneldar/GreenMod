@@ -1,0 +1,19 @@
+- type: furnace
+  out: blocks/basalt
+  out-a: Basalt
+  c1: blocks/basaltcobblestone
+  c1-a: Basalt Cobblestone
+  c2: coal
+  c2-a: Coal
+- type: crafting-table
+  out: blocks/basaltbrick
+  out-a: Basalt Brick
+  out-n: 4
+  c1: blocks/basalt
+  c1-a: Basalt
+  c2: blocks/basalt
+  c2-a: Basalt
+  c4: blocks/basalt
+  c4-a: Basalt
+  c5: blocks/basalt
+  c5-a: Basalt

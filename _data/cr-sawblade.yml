@@ -1,0 +1,22 @@
+- type: crafting-table
+  out: items/item.greenmod.sawblade.diamond
+  out-a: Diamond Sawblade
+  c2: iron_ingot
+  c2-a: Iron Ingot
+  c3: diamond
+  c3-a: Diamond
+  c4: iron_ingot
+  c4-a: Iron Ingot
+  c5: diamond
+  c5-a: Diamond
+- type: crafting-table
+  out: items/item.greenmod.sawblade.ruby
+  out-a: Ruby Sawblade
+  c2: iron_ingot
+  c2-a: Iron Ingot
+  c3: items/item.greenmod.gem.ruby
+  c3-a: Ruby
+  c4: iron_ingot
+  c4-a: Iron Ingot
+  c5: items/item.greenmod.gem.ruby
+  c5-a: Ruby

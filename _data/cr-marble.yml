@@ -1,0 +1,19 @@
+- type: furnace
+  out: blocks/marble
+  out-a: Marble
+  c1: blocks/marblecobblestone
+  c1-a: Marble Cobblestone
+  c2: coal
+  c2-a: Coal
+- type: crafting-table
+  out: blocks/marblebrick
+  out-a: Marble Brick
+  out-n: 4
+  c1: blocks/marble
+  c1-a: Marble
+  c2: blocks/marble
+  c2-a: Marble
+  c4: blocks/marble
+  c4-a: Marble
+  c5: blocks/marble
+  c6-a: Marble
