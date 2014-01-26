@@ -7,6 +7,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class GMConfig {
 	
 	// Block
+	public static int blockCropCottonID;
 	public static int blockOreGemID;
 	public static int blockDecorativeGemID;
 	public static int blockRockID;
@@ -16,6 +17,7 @@ public class GMConfig {
 	public static boolean generateMarble;
 	public static boolean generateOre;
 	public static boolean enableRecipeGemTool;
+	public static boolean enableSheepDrop;
 	public static boolean enableVanillaGemTool;
 	public static int[] OreGemRarity;
 	public static int[] diamondPruningSawAoe;
@@ -23,8 +25,11 @@ public class GMConfig {
 	public static int[] ironPruningSawAoe;
 	
 	// Item
+	public static int itemFoodID;
 	public static int itemGemID;
+	public static int itemMiscID;
 	public static int itemSawBladeID;
+	public static int itemSeedID;
 	public static int itemIronSawBladeID;
 	public static int itemDiamondSawBladeID;
 	
@@ -61,6 +66,7 @@ public class GMConfig {
 			config.load();
 			
 			// Block
+			blockCropCottonID = config.getBlock("ID.Crop.Cotton", 704).getInt();
 			blockDecorativeGemID = config.getBlock("ID.Decorative.Gem", 702).getInt();
 			blockOreGemID = config.getBlock("ID.Ore.Gem", 701).getInt();
 			blockRockID = config.getBlock("ID.Block.Rock", 703).getInt();
@@ -70,12 +76,13 @@ public class GMConfig {
 			generateMarble = config.get(config.CATEGORY_GENERAL, "Generate marble deposits", true).getBoolean(true);
 			generateBasalt = config.get(config.CATEGORY_GENERAL, "Generate basalt deposits", true).getBoolean(true);
 			enableRecipeGemTool = config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool recipes", true).getBoolean(true);
+			enableSheepDrop = config.get(config.CATEGORY_GENERAL, "Enable sheep mutton drop", true).getBoolean(true);
 			config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool recipes", true)
 				.comment = "Game will complain about missing ID's if enabled once before disabling.";
 			enableVanillaGemTool = config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool", true).getBoolean(true);
 			
 			OreGemRarity = config.get(config.CATEGORY_GENERAL, "Ore.Gem.Rarity", new int[] { 4, 3, 3 }).getIntList();
-			config.get(config.CATEGORY_GENERAL, "Ore.Gem.Rarity", new int[] { 5, 3, 3 })
+			config.get(config.CATEGORY_GENERAL, "Ore.Gem.Rarity", new int[] { 4, 3, 3 })
 				.comment = "No. of veins in a chunk. Lowest no. of ores in a vein. RNG for more ores, 3 gives 0-2 extra.";
 			
 			// General // Tool AoE
@@ -86,8 +93,11 @@ public class GMConfig {
 			ironPruningSawAoe = config.get(config.CATEGORY_GENERAL, "Tool.Saw.Iron.Aoe", new int[] {1, 1, 1}).getIntList();
 			
 			// Item
+			itemFoodID = config.getItem("ID.Item.Food", 7324).getInt();
 			itemGemID = config.getItem("ID.Item.Gem", 7320).getInt();
+			itemMiscID = config.getItem("ID.Item.Misc", 7323).getInt();
 			itemSawBladeID = config.getItem("ID.Item.Sawblade", 7321).getInt();
+			itemSeedID = config.getItem("ID.Item.Seed", 7322).getInt();
 			
 			// Item // Tool // Axe
 			itemRubyAxeID = config.getItem("ID.Tool.Axe.Ruby", 7330).getInt();

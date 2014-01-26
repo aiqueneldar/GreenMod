@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.EnumHelper;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -22,14 +23,19 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.SidedProxy;
+import se.luppii.greenmod.block.GMBlockCropCotton;
 import se.luppii.greenmod.block.GMBlockDecorativeGem;
 import se.luppii.greenmod.block.GMBlockOreGem;
 import se.luppii.greenmod.block.GMBlockRock;
 import se.luppii.greenmod.block.GMMultiItemBlockDecorativeGem;
 import se.luppii.greenmod.block.GMMultiItemBlockOreGem;
 import se.luppii.greenmod.block.GMMultiItemBlockRock;
+import se.luppii.greenmod.event.GMSheepDropEvent;
 import se.luppii.greenmod.item.GMItemGem;
+import se.luppii.greenmod.item.GMItemMisc;
 import se.luppii.greenmod.item.GMItemSawBlade;
+import se.luppii.greenmod.item.GMItemSeed;
+import se.luppii.greenmod.item.food.GMItemFood;
 import se.luppii.greenmod.item.tool.GMToolAxe;
 import se.luppii.greenmod.item.tool.GMToolHoe;
 import se.luppii.greenmod.item.tool.GMToolPickaxe;
@@ -52,11 +58,13 @@ public class GreenMod {
 	public static final String modString = GMReferences.MOD_STRING;
 	
 	// Block
+	public static Block cropCottonBlock;
 	public static Block oreGemBlock;
 	public static Block decorativeGemBlock;
 	public static Block blockRock;
 	
 	// General
+	public static boolean enableSheepDrop;
 	public static boolean generateBasalt;
 	public static boolean generateMarble;
 	public static boolean generateOre;
@@ -67,8 +75,13 @@ public class GreenMod {
 	
 	// Item
 	public static Item itemBlockRock;
+	public static Item itemFood;
+	public static Item itemMisc;
 	public static Item multiGem;
 	public static Item multiSawBlade;
+	
+	// Item // Seed
+	public static Item itemSeed;
 	
 	// Item // Tool // Axe
 	public static Item rubyAxe;
@@ -114,11 +127,13 @@ public class GreenMod {
 		conf.loadConfig(e);
 		
 		// Block
+		cropCottonBlock = new GMBlockCropCotton(conf.blockCropCottonID);
 		decorativeGemBlock = new GMBlockDecorativeGem(conf.blockDecorativeGemID);
 		oreGemBlock = new GMBlockOreGem(conf.blockOreGemID);
 		blockRock = new GMBlockRock(conf.blockRockID);
 		
 		// World gen
+		enableSheepDrop = conf.enableSheepDrop;
 		generateBasalt = conf.generateBasalt;
 		generateMarble = conf.generateMarble;
 		generateOre = conf.generateOre;
@@ -130,10 +145,16 @@ public class GreenMod {
 		ironPruningSawAoe = conf.ironPruningSawAoe;
 
 		// Item
+		itemFood = new GMItemFood(conf.itemFoodID, 4, 0.6F, true)
+			.setUnlocalizedName(modString + "food.cookedmutton");
 		multiGem = new GMItemGem(conf.itemGemID)
 			.setUnlocalizedName(modString + "gem");
+		itemMisc = new GMItemMisc(conf.itemMiscID)
+			.setUnlocalizedName(modString + "misc");
 		multiSawBlade = new GMItemSawBlade(conf.itemSawBladeID)
 			.setUnlocalizedName(modString + "sawblade");
+		itemSeed = new GMItemSeed(conf.itemSeedID, cropCottonBlock.blockID, Block.tilledField.blockID)
+			.setUnlocalizedName(modString + "seed");
 		
 		// Only register if setting is enabled.
 		if (conf.enableVanillaGemTool) {
@@ -187,11 +208,12 @@ public class GreenMod {
 	
 	@EventHandler
 	public void load(FMLInitializationEvent e) {
-		
+
 		oreDictRegistration();
 		addRecipes();
 		worldGen(generateOre, generateBasalt, generateMarble);
 		
+		registerEvent(new GMSheepDropEvent(), enableSheepDrop);
 		proxy.registerRenderers();
 		
 	}
@@ -202,12 +224,27 @@ public class GreenMod {
 		
 	}
 	
+	private static void registerEvent(Object par1, boolean par2) {
+		if (par2) {
+			MinecraftForge.EVENT_BUS.register(par1);
+		}
+	}
+	
 	private static void addRecipes() {
 		// Object contain material used for the craft.
 		Object[] materials = { Item.diamond, Item.ingotIron, "gemRuby", "gemSapphire" };
 		Object[] rocks = { "blockBasalt", "blockMarble" };
 		Item[][] tools = { { rubyAxe, rubyHoe, rubyPickaxe, rubyShovel, rubySword }, { sapphireAxe, sapphireHoe, sapphirePickaxe, sapphireShovel, sapphireSword } };
 		Item[] saws = { diamondPruningSaw, ironPruningSaw, rubyPruningSaw, sapphirePruningSaw };
+		
+		// Cotton boll --> Cotton seed
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemSeed, 1, 0), new ItemStack(itemMisc, 1, 0)));
+		// Cotton boll --> String
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.silk), true, new Object[] {
+			"MM ", "MM ", 'M', new ItemStack(itemMisc, 1, 0)}));
+		
+		// Raw mutton --> Cooked mutton
+		FurnaceRecipes.smelting().addSmelting(itemMisc.itemID, 1, new ItemStack(itemFood), 0.1f);
 		
 		// Recipes with Ruby/Sapphire
 		for (int i = 0; i < materials.length; i++) {
@@ -254,16 +291,21 @@ public class GreenMod {
 	}
 	
 	private static void oreDictRegistration() {
+		MinecraftForge.addGrassSeed(new ItemStack(itemSeed, 1, 0), 5);
+		
 		GameRegistry.registerBlock(decorativeGemBlock, GMMultiItemBlockDecorativeGem.class, decorativeGemBlock.getUnlocalizedName());
 		GameRegistry.registerBlock(oreGemBlock, GMMultiItemBlockOreGem.class, oreGemBlock.getUnlocalizedName());
 		GameRegistry.registerBlock(blockRock, GMMultiItemBlockRock.class, blockRock.getUnlocalizedName());
+		GameRegistry.registerBlock(cropCottonBlock, cropCottonBlock.getUnlocalizedName());
 		
+		OreDictionary.registerOre("cropCotton", new ItemStack(cropCottonBlock, 1, 0));
 		OreDictionary.registerOre("blockBasalt", new ItemStack(blockRock, 1, 0));
 		OreDictionary.registerOre("blockMarble", new ItemStack(blockRock, 1, 1));
 		OreDictionary.registerOre("gemRuby", new ItemStack(multiGem, 1, 0));
 		OreDictionary.registerOre("gemSapphire", new ItemStack(multiGem, 1, 1));
 		OreDictionary.registerOre("oreRuby", new ItemStack(oreGemBlock, 1, 0));
 		OreDictionary.registerOre("oreSapphire", new ItemStack(oreGemBlock, 1, 1));
+		OreDictionary.registerOre("seedCotton", new ItemStack(itemSeed, 1, 0));
 	}
 	
 	private static void worldGen(boolean par1Boolean, boolean par2Boolean, boolean par3Boolean) {
