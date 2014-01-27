@@ -11,6 +11,24 @@
                 <delete dir="${build.dir.development}\forge\mcp\src\minecraft\se\luppii\greenmod" />
                 <delete dir="${build.dir.development}\forge\mcp\reobf\minecraft" />
         </target>
+		
+		<!-- Set mod version -->
+		<target name="set_release_mod_version">
+				<loadfile srcfile="${build.dir.development}\source\GreenMod\common\mcmod.info" property="mod_version">
+						<filterchain>
+								<linecontains>
+										<contains value='"version'/>
+								</linecontains>
+								<tokenfilter>
+										<filetokenizer/>
+										<replaceregex pattern='^ +\"version\": \"(.*)\",\r?\n|\r' replace="\1"/>
+								</tokenfilter>
+						</filterchain>
+				</loadfile>
+				<propertyfile file="build.properties">
+						<entry key="release.mod.version" value="${mod_version}" default="0.0.1"/>
+				</propertyfile>
+		</target>
 
         <!-- Increment build number -->
         <target name="increment_build_number">
