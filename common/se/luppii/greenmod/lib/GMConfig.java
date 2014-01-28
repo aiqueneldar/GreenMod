@@ -77,9 +77,9 @@ public class GMConfig {
 			generateBasalt = config.get(config.CATEGORY_GENERAL, "Generate basalt deposits", true).getBoolean(true);
 			enableRecipeGemTool = config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool recipes", true).getBoolean(true);
 			enableSheepDrop = config.get(config.CATEGORY_GENERAL, "Enable sheep mutton drop", true).getBoolean(true);
-			config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool recipes", true)
-				.comment = "Game will complain about missing ID's if enabled once before disabling.";
 			enableVanillaGemTool = config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool", true).getBoolean(true);
+			config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool", true)
+				.comment = "Game will complain about missing ID's if enabled once before disabling.";
 			
 			OreGemRarity = config.get(config.CATEGORY_GENERAL, "Ore.Gem.Rarity", new int[] { 4, 3, 3 }).getIntList();
 			config.get(config.CATEGORY_GENERAL, "Ore.Gem.Rarity", new int[] { 4, 3, 3 })
