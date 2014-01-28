@@ -75,6 +75,7 @@
         <target name="build">
                 <!-- Prep for the build -->
                 <antcall target="clean" />
+                <antcall target="set_release_mod_version" />
                 <antcall target="increment_build_number" />
                 <antcall target="prep" />
                 <antcall target="recompile" />                
