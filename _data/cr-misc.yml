@@ -25,3 +25,21 @@
   out-n: 9
   c5: blocks/ruby_block
   c5-a: Ruby Block
+- type: crafting-table
+  out: string
+  out-a: String
+  c1: items/item.greenmod.misc.cottonboll
+  c1-a: Cotton Boll
+  c2: items/item.greenmod.misc.cottonboll
+  c3-a: Cotton Boll
+  c5: items/item.greenmod.misc.cottonboll
+  c4-a: Cotton Boll
+  c5: items/item.greenmod.misc.cottonboll
+  c5-a: Cotton Boll
+- type: furnace
+  out: items/item.greenmod.food.cookedmutton
+  out-a: Cooked Mutton
+  c1: items/item.greenmod.misc.rawmutton
+  c1-a: Raw Mutton
+  c2: coal
+  c2-a: Coal

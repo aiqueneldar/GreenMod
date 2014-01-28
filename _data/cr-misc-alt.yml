@@ -25,3 +25,8 @@
   out-n: 9
   c5: blocks/sapphire_block
   c5-a: Sapphire Block
+- type: crafting-table
+  out: items/item.greenmod.seed.cotton
+  out-a: Cotton Seed
+  c5: items/item.greenmod.misc.cottonboll
+  c5-a: Cotton Boll
