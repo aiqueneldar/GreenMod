@@ -16,12 +16,13 @@
 		<target name="set_release_mod_version">
 				<loadfile srcfile="${build.dir.development}\source\GreenMod\common\mcmod.info" property="mod_version">
 						<filterchain>
+								<headfilter lines="10"/>
 								<linecontains>
 										<contains value='"version'/>
 								</linecontains>
 								<tokenfilter>
 										<filetokenizer/>
-										<replaceregex pattern='^ +\"version\": \"(.*)\",\r?\n|\r' replace="\1"/>
+										<replaceregex pattern='^ +\"version\": \"(.*)\",\r?\n|\r' flags="" replace="\1"/>
 								</tokenfilter>
 						</filterchain>
 				</loadfile>
@@ -68,6 +69,7 @@
 				<delete dir="${build.dir.development}\forge\mcp\reobf\minecraft\ibxm" />
 				<delete dir="${build.dir.development}\forge\mcp\reobf\minecraft\net" />
 				<delete dir="${build.dir.development}\forge\mcp\reobf\minecraft\paulscode" />
+				<delete dir="${build.dir.development}\forge\mcp\reobf\minecraft\powercrystals" />
 		</target>
         
         <!-- THE ACTUAL BUILDING PART -->

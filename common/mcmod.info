@@ -4,11 +4,23 @@
         "name": "Luppii's Green Mod",
         "url": "greenmod.luppii.se",
         "credits": "Available thanks to the power of open source.",
-        "version": "0.3.0",
-        "authors": [
-            "Luppii"
-            ],
+        "version": "0.3.1",
         "mcversion": "1.6.4",
+        "authors": [ "Luppii" ],
+        "dependants": [ "GreenMod|MFR" ],
         "description": "Aesthetic items and blocks!"
+    },
+    {
+        "modid": "GreenMod|MFR",
+        "name": "Luppii's Green Mod Compatiable: MFR",
+        "url": "greenmod.luppii.se",
+        "credits": "All the contributors of MFR",
+        "version": "0.3.1",
+        "mcversion": "1.6.4",
+        "authors": [ "Luppii" ],
+        "parent": "GreenMod",
+        "dependencies": [ "GreenMod" ],
+        "description": "Luppii's Green Mod addon for MineFactoryReloaded compability."
     }
+    
 ]
