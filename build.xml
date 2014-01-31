@@ -69,7 +69,6 @@
 				<delete dir="${build.dir.development}\forge\mcp\reobf\minecraft\ibxm" />
 				<delete dir="${build.dir.development}\forge\mcp\reobf\minecraft\net" />
 				<delete dir="${build.dir.development}\forge\mcp\reobf\minecraft\paulscode" />
-				<delete dir="${build.dir.development}\forge\mcp\reobf\minecraft\powercrystals" />
 		</target>
         
         <!-- THE ACTUAL BUILDING PART -->
