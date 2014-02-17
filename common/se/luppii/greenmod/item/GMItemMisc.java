@@ -4,7 +4,6 @@ public class GMItemMisc extends GMMultiItem {
 
 	public GMItemMisc(int par1) {
 		super(par1);
-		this.setNames("cottonboll", "rawmutton");
+		this.setNames("cottonboll", "orange", "coconut.seed", "coconut.nut");
 	}
-
 }

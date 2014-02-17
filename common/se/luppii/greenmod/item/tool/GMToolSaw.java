@@ -34,16 +34,26 @@ public class GMToolSaw extends GMTool {
 	
 	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
 		if ((double)Block.blocksList[par3].getBlockHardness(par2World, par4, par5, par6) != 0.0D) {
+			
 			if (par2World.getBlockMaterial(par4, par5, par6) == Material.leaves) {
+				int blocksDestroyed = 0;
 				for (int y = this.aoeEffect[1]; y >= -1; y--) {
 					for (int x = this.aoeEffect[0]; x >= -1; x--) {
 						for (int z = this.aoeEffect[2]; z >= -1; z--) {
 							if (par2World.getBlockMaterial(par4 + x, par5 + y, par6 + z) == Material.leaves) {
-								par1ItemStack.damageItem(1, par7EntityLivingBase);
-								par2World.destroyBlock(par4 + x, par5 + y, par6 + z, true);
+								
+								if (par2World.destroyBlock(par4 + x, par5 + y, par6 + z, true)) {
+									blocksDestroyed += 1;
+								}
 							}
 						}
 					}
+				}
+				if (blocksDestroyed > 1) {
+					par1ItemStack.damageItem(blocksDestroyed / 5, par7EntityLivingBase);
+				}
+				else {
+					par1ItemStack.damageItem(1, par7EntityLivingBase);
 				}
 			}
 			else {
@@ -51,6 +61,5 @@ public class GMToolSaw extends GMTool {
 			}
 		}
 		return true;
-	}
-	
+	}	
 }

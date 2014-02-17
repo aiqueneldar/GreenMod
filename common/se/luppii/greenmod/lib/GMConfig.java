@@ -11,21 +11,27 @@ public class GMConfig {
 	public static int blockOreGemID;
 	public static int blockDecorativeGemID;
 	public static int blockRockID;
+	public static int blockTreeLeavesID;
+	public static int blockTreeSaplingID;
+	public static int blockTreeWoodID;
 	
 	// General
 	public static boolean generateBasalt;
 	public static boolean generateMarble;
 	public static boolean generateOre;
+	public static boolean generateFruitTrees;
 	public static boolean enableRecipeGemTool;
 	public static boolean enableSheepDrop;
 	public static boolean enableVanillaGemTool;
+	public static int gemDurability;
 	public static int[] OreGemRarity;
 	public static int[] diamondPruningSawAoe;
 	public static int[] gemPruningSawAoe;
 	public static int[] ironPruningSawAoe;
 	
 	// Item
-	public static int itemFoodID;
+	public static int itemFoodMiscID;
+	public static int itemFoodMuttonID;
 	public static int itemGemID;
 	public static int itemMiscID;
 	public static int itemSawBladeID;
@@ -69,12 +75,19 @@ public class GMConfig {
 			blockCropCottonID = config.getBlock("ID.Crop.Cotton", 704).getInt();
 			blockDecorativeGemID = config.getBlock("ID.Decorative.Gem", 702).getInt();
 			blockOreGemID = config.getBlock("ID.Ore.Gem", 701).getInt();
-			blockRockID = config.getBlock("ID.Block.Rock", 703).getInt();
+			blockRockID = config.getBlock("ID.Rock", 703).getInt();
+			blockTreeLeavesID = config.getBlock("ID.Tree.Leaves", 706).getInt();
+			blockTreeSaplingID = config.getBlock("ID.Tree.Sapling", 707).getInt();
+			blockTreeWoodID = config.getBlock("ID.Tree.Log", 705).getInt();
+			
+			// General // Durability
+			gemDurability = config.get(config.CATEGORY_GENERAL, "Ore.Gem.Durability", 384).getInt();
 			
 			// General // World gen
 			generateOre = config.get(config.CATEGORY_GENERAL, "Generate gem ore deposits", true).getBoolean(true);
 			generateMarble = config.get(config.CATEGORY_GENERAL, "Generate marble deposits", true).getBoolean(true);
 			generateBasalt = config.get(config.CATEGORY_GENERAL, "Generate basalt deposits", true).getBoolean(true);
+			generateFruitTrees = config.get(config.CATEGORY_GENERAL, "Generate fruit trees", true).getBoolean(true);
 			enableRecipeGemTool = config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool recipes", true).getBoolean(true);
 			enableSheepDrop = config.get(config.CATEGORY_GENERAL, "Enable sheep mutton drop", true).getBoolean(true);
 			enableVanillaGemTool = config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool", true).getBoolean(true);
@@ -93,7 +106,8 @@ public class GMConfig {
 			ironPruningSawAoe = config.get(config.CATEGORY_GENERAL, "Tool.Saw.Iron.Aoe", new int[] {1, 1, 1}).getIntList();
 			
 			// Item
-			itemFoodID = config.getItem("ID.Item.Food", 7324).getInt();
+			itemFoodMiscID = config.getItem("ID.Item.Food.Misc", 7325).getInt();
+			itemFoodMuttonID = config.getItem("ID.Item.Food.Mutton", 7324).getInt();
 			itemGemID = config.getItem("ID.Item.Gem", 7320).getInt();
 			itemMiscID = config.getItem("ID.Item.Misc", 7323).getInt();
 			itemSawBladeID = config.getItem("ID.Item.Sawblade", 7321).getInt();
