@@ -1,10 +1,10 @@
 package se.luppii.greenmod.world;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.logging.Level;
 
 import se.luppii.greenmod.GreenMod;
-import se.luppii.greenmod.lib.GMConfig;
 import se.luppii.greenmod.lib.GMLogger;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -22,6 +22,7 @@ public class GMWorldGen implements IWorldGenerator {
 		int z = chunkZ * 16 + random.nextInt(16);
 		
 		switch(world.provider.dimensionId) {
+		
 			case -1:
 				generateNether(world, random, x, z);
 				break;
@@ -45,19 +46,29 @@ public class GMWorldGen implements IWorldGenerator {
 	private void generateSurface(World world, Random random, int x, int z) {
 
 		// Generate Fruit Trees
-		if (GMConfig.generateFruitTrees) {
+		if (GreenMod.generateFruitTree) {
 			
-			if (random.nextInt(100) < 30) {
+			String biome = world.getBiomeGenForCoords(x, z).biomeName;
+			int rand = random.nextInt(100);
+			
+			if (rand < 5 && generateInBiome(biome)) {
 				
-				new GMWorldGenTrees(true).generate(world, random, x, 1 + random.nextInt(3), z);
+				if ((biome == "Plains" && rand == 1) || biome != "Plains") {
+					
+					new GMWorldGenTrees(true).generate(world, random, x, 1 + random.nextInt(2), z);
+				}
 			}
-		}
-		else {
-			GMLogger.log(Level.INFO, "World generation for fruit trees is disabled");
+			if (rand > 5 && rand < 11) {
+				
+				if ((biome == "Plains" && rand == 10) || biome != "Plains") {
+					
+					new GMWorldGenTrees(true, 5, 1, 1, false).generate(world, random, x, 1 + random.nextInt(2), z);
+				}
+			}
 		}
 		
 		// Generate Marble and Basalt
-		if (GMConfig.generateBasalt || GMConfig.generateMarble) {
+		if (GreenMod.generateBasalt || GreenMod.generateMarble) {
 			
 			int blockId = GreenMod.blockRock.blockID;
 			int blockToReplace = Block.stone.blockID;
@@ -70,21 +81,20 @@ public class GMWorldGen implements IWorldGenerator {
 					int rockY = random.nextInt(80);
 					int rockZ = z + random.nextInt(16);
 					
-					if (i == 0 && GMConfig.generateBasalt) {
+					if (i == 0 && GreenMod.generateBasalt) {
+						
 						(new WorldGenMinable(blockId, i, 40 + random.nextInt(30), blockToReplace)).generate(world, random, rockX, rockY, rockZ);
 					}
-					else if (i == 1 && GMConfig.generateMarble) {
+					else if (i == 1 && GreenMod.generateMarble) {
+						
 						(new WorldGenMinable(blockId, i, 40 + random.nextInt(30), blockToReplace)).generate(world, random, rockX, rockY, rockZ);
 					}
 				}
 			}
 		}
-		else {
-			GMLogger.log(Level.INFO, "World generation for rock is disabled");
-		}
 		
 		// Generate Ruby and Sapphire
-		if (GMConfig.generateOre) {
+		if (GreenMod.generateOre) {
 			
 			int blockId = GreenMod.oreGemBlock.blockID;
 			int blockToReplace = Block.stone.blockID;
@@ -102,8 +112,11 @@ public class GMWorldGen implements IWorldGenerator {
 				}
 			}
 		}
-		else {
-			GMLogger.log(Level.INFO, "World generation for gems is disabled");
-		}
+	}
+	
+	private static boolean generateInBiome(String str) {
+		
+		String[] disallowedBiomes = { "Swampland" };
+		return (!Arrays.asList(disallowedBiomes).contains(str));
 	}
 }

@@ -12,6 +12,7 @@ public class GMConfig {
 	public static int blockDecorativeGemID;
 	public static int blockRockID;
 	public static int blockTreeLeavesID;
+	public static int blockTreePlankID;
 	public static int blockTreeSaplingID;
 	public static int blockTreeWoodID;
 	
@@ -19,9 +20,10 @@ public class GMConfig {
 	public static boolean generateBasalt;
 	public static boolean generateMarble;
 	public static boolean generateOre;
-	public static boolean generateFruitTrees;
+	public static boolean generateFruitTree;
 	public static boolean enableRecipeGemTool;
 	public static boolean enableSheepDrop;
+	public static boolean enableSquidDrop;
 	public static boolean enableVanillaGemTool;
 	public static int gemDurability;
 	public static int[] OreGemRarity;
@@ -69,6 +71,7 @@ public class GMConfig {
 		
 		Configuration config = new Configuration(e.getSuggestedConfigurationFile()); // Gets config file
 		try {
+			
 			config.load();
 			
 			// Block
@@ -77,6 +80,7 @@ public class GMConfig {
 			blockOreGemID = config.getBlock("ID.Ore.Gem", 701).getInt();
 			blockRockID = config.getBlock("ID.Rock", 703).getInt();
 			blockTreeLeavesID = config.getBlock("ID.Tree.Leaves", 706).getInt();
+			blockTreePlankID = config.getBlock("ID.Tree.Plank", 708).getInt();
 			blockTreeSaplingID = config.getBlock("ID.Tree.Sapling", 707).getInt();
 			blockTreeWoodID = config.getBlock("ID.Tree.Log", 705).getInt();
 			
@@ -87,9 +91,10 @@ public class GMConfig {
 			generateOre = config.get(config.CATEGORY_GENERAL, "Generate gem ore deposits", true).getBoolean(true);
 			generateMarble = config.get(config.CATEGORY_GENERAL, "Generate marble deposits", true).getBoolean(true);
 			generateBasalt = config.get(config.CATEGORY_GENERAL, "Generate basalt deposits", true).getBoolean(true);
-			generateFruitTrees = config.get(config.CATEGORY_GENERAL, "Generate fruit trees", true).getBoolean(true);
+			generateFruitTree = config.get(config.CATEGORY_GENERAL, "Generate fruit trees", true).getBoolean(true);
 			enableRecipeGemTool = config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool recipes", true).getBoolean(true);
 			enableSheepDrop = config.get(config.CATEGORY_GENERAL, "Enable sheep mutton drop", true).getBoolean(true);
+			enableSquidDrop = config.get(config.CATEGORY_GENERAL, "Enable raw squid drop", true).getBoolean(true);
 			enableVanillaGemTool = config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool", true).getBoolean(true);
 			config.get(config.CATEGORY_GENERAL, "Enable vanilla gem tool", true)
 				.comment = "Game will complain about missing ID's if enabled once before disabling.";
@@ -142,9 +147,8 @@ public class GMConfig {
 			config.save();
 		}
 		catch (Exception err) {
+			
 			err.printStackTrace();
-		}
-		
-	}
-	
+		}	
+	}	
 }

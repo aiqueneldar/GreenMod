@@ -21,6 +21,7 @@ public class GMBlockDecorativeGem extends GMMultiBlock {
 	private static String[] names = new String[] { "ruby", "sapphire" };
 	
 	public GMBlockDecorativeGem(int par1) {
+		
 		super(par1, Material.iron, names);
 		this.setHardness(2.0F);
 		this.setResistance(10.0F);

@@ -11,7 +11,7 @@ public class HarvestableCrop extends Harvestable {
 	
 	// par1 == blockID; par2 == blockMeta
 	public HarvestableCrop(int par1, int par2) {
-				
+		
 		super(par1, HarvestType.Normal);
 		this.meta = par2;
 	}

@@ -17,7 +17,7 @@ public class Harvestable implements IFactoryHarvestable {
 	
 	public Harvestable(int par1, HarvestType par2HarvestType) {
 		this.blockID = par1;
-		this.harvestType = par2HarvestType;	
+		this.harvestType = par2HarvestType;
 	}
 	
 	@Override

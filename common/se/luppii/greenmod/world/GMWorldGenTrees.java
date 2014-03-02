@@ -27,10 +27,12 @@ public class GMWorldGenTrees extends WorldGenerator {
     private final int metaLeaves;
     
     public GMWorldGenTrees(boolean par1) {
+    	
     	this(par1, 5, 0, 0, false);
     }
     
 	public GMWorldGenTrees(boolean par1, int par2, int par3, int par4, boolean par5) {
+		
 		super(par1);
 		this.minTreeHeight = par2;
 		this.metaWood = par3;
@@ -41,23 +43,40 @@ public class GMWorldGenTrees extends WorldGenerator {
 	@Override
 	public boolean generate(World world, Random random, int i, int j, int k) {
 		
-		if (world.getBiomeGenForCoords(i, k).getFloatTemperature() < 0.8F ||
-					world.getBiomeGenForCoords(i, k).getFloatTemperature() >= 2.0F) {
+		if (world.getBiomeGenForCoords(i, k).getFloatTemperature() < 0.8F) {			
+			
+			return false;
+		}
+		if (this.metaLeaves == 0 && world.getBiomeGenForCoords(i, k).getFloatTemperature() >= 2.0F) {
+			
 			return false;
 		}
 		
 		int tries = j;
 		
 		for (int l = 0; l <= tries; l++) {
+			
 			int y = world.getActualHeight() - 1;
 			while (world.isAirBlock(i, y, k) && y > 0) {
+				
 				y--;
 			}
 			
-			if (!growOrangeTree(world, random, i, y + 1, k)) {
-				tries--;
+			if (this.metaLeaves == 0) {
+				
+				if (!growOrangeTree(world, random, i, y + 1, k)) {
+					
+					tries--;
+				}
 			}
-			
+			else if (this.metaLeaves == 1) {
+				
+				if (!growPalmTree(world, random, i, y + 1, k)) {
+					
+					tries--;
+				}
+			}
+						
 			i += random.nextInt(16) - 8;
 			k += random.nextInt(16) - 8;
 		}
@@ -172,7 +191,7 @@ public class GMWorldGenTrees extends WorldGenerator {
 	
 	public boolean growPalmTree(World world, Random random, int x, int y, int z) {
 		
-		int treeHeight = this.minTreeHeight + random.nextInt(2);
+		int treeHeight = this.minTreeHeight + random.nextInt(3);
 		int worldHeight = world.getHeight();
 		Block block;
 		
@@ -300,7 +319,6 @@ public class GMWorldGenTrees extends WorldGenerator {
 						}
 					}
 				}
-				
 				return true;
 			}		
 		}
