@@ -3,6 +3,7 @@ layout: default
 title: Green Mod - Download
 base_url: "../"
 mod_releases:
+ - ["http://www.curseforge.com/media/files/777/10/GreenMod_0.4.0-1.jar", "GreenMod_0.4.0-1.jar", "../Releases/1.6.4/0.4.0/GreenMod_0.4.0-1.jar"]
  - ["http://www.curseforge.com/media/files/770/586/GreenMod_0.3.2-1.jar", "GreenMod_0.3.2-1.jar"]
  - ["http://www.curseforge.com/media/files/770/508/GreenMod_0.3.1-1.jar", "GreenMod_0.3.1-1.jar"]
  - ["http://www.curseforge.com/media/files/770/209/GreenMod_0.3.0-2.jar", "GreenMod_0.3.0-2.jar"]
@@ -16,7 +17,7 @@ mod_releases:
   <p>You may download and use the releases as you wish. Be aware that the mod is under rapid development and features may change frequently.</p>
   <p>
 {% for jar in page.mod_releases %}
-    <a href="{{ jar[0] }}">{{ jar[1] }}</a><br />
+    <a href="{{ jar[0] }}">{{ jar[1] }}</a>{% if jar[2] %} (<a href="{{ jar[2] }}">Mirror</a>){% endif %}<br />
 {% endfor %}
   </p>
 </div>
