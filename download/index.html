@@ -17,7 +17,7 @@ mod_releases:
   <p>You may download and use the releases as you wish. Be aware that the mod is under rapid development and features may change frequently.</p>
   <p>
 {% for jar in page.mod_releases %}
-    <a href="{{ jar[0] }}">{{ jar[1] }}</a>{% if jar[2] %} (<a href="{{ jar[2] }}">Mirror</a>){% endif %}<br />
+    <a href="{{ jar[0] }}">{{ jar[1] }}</a>{% if jar[2] %} <a href="{{ jar[2] }}">(Mirror)</a>{% endif %}<br />
 {% endfor %}
   </p>
 </div>
