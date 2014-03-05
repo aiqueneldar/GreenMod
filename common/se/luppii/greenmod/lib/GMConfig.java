@@ -17,6 +17,7 @@ public class GMConfig {
 	public static int blockTreeWoodID;
 	
 	// General
+	public static boolean checkForUpdates;
 	public static boolean generateBasalt;
 	public static boolean generateMarble;
 	public static boolean generateOre;
@@ -143,6 +144,9 @@ public class GMConfig {
 			// Item // Weapon // Sword
 			itemRubySwordID = config.getItem("ID.Weapon.Sword.Ruby", 7342).getInt();
 			itemSapphireSwordID = config.getItem("ID.Weapon.Sword.Sapphire", 7343).getInt();
+			
+			// Update Checker
+			checkForUpdates = config.get(config.CATEGORY_GENERAL, "Check for updates", true).getBoolean(true);
 			
 			config.save();
 		}

@@ -22,7 +22,9 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.relauncher.Side;
 import se.luppii.greenmod.block.GMBlockCropCotton;
 import se.luppii.greenmod.block.GMBlockDecorativeGem;
 import se.luppii.greenmod.block.GMBlockLeaves;
@@ -58,6 +60,7 @@ import se.luppii.greenmod.lib.GMConfig;
 import se.luppii.greenmod.lib.GMLogger;
 import se.luppii.greenmod.lib.GMReferences;
 import se.luppii.greenmod.proxy.CommonProxy;
+import se.luppii.greenmod.updater.UpdateManager;
 import se.luppii.greenmod.world.GMWorldGen;
 import se.luppii.greenmod.world.GMWorldGenOreGem;
 import se.luppii.greenmod.world.GMWorldGenRock;
@@ -81,6 +84,7 @@ public class GreenMod {
 	public static Block blockWood;
 	
 	// General
+	public static boolean checkForUpdates;
 	public static boolean enableSheepDrop;
 	public static boolean enableSquidDrop;
 	public static boolean generateBasalt;
@@ -145,6 +149,9 @@ public class GreenMod {
 		// Load config.
 		GMConfig conf = new GMConfig();
 		conf.loadConfig(e);
+		
+		// Update Checker
+		checkForUpdates = conf.checkForUpdates;
 		
 		// Block
 		cropCottonBlock = new GMBlockCropCotton(conf.blockCropCottonID);
@@ -243,12 +250,14 @@ public class GreenMod {
 		GameRegistry.registerCraftingHandler(new GMFoodCraftingHandler());
 		oreDictRegistration();
 		addRecipes();
-		GameRegistry.registerWorldGenerator(new GMWorldGen());
 		registerEvent(new GMSheepDropEvent(), enableSheepDrop);
 		registerEvent(new GMSquidDropEvent(), enableSquidDrop);
 		MinecraftForge.EVENT_BUS.register(new GMBonemealEvent());
 		proxy.registerRenderers();
 		
+		GameRegistry.registerWorldGenerator(new GMWorldGen());
+		
+		TickRegistry.registerScheduledTickHandler(new UpdateManager(), Side.CLIENT);
 	}
 	
 	@EventHandler
