@@ -98,9 +98,7 @@ public class GMWorldGenTrees extends WorldGenerator {
 			int yOffset;
 			int zOffset;
 			
-			if (block != null && block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, ((BlockSapling)GreenMod.blockSapling)) &&
-					y < worldHeight - treeHeight - 1) {
-				
+			if (block != null && block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, ((BlockSapling)GreenMod.blockSapling))) {
 				for (yOffset = y; yOffset <= y + treeHeight + 1; ++yOffset) {
 					
 					byte radius = 1;
@@ -109,31 +107,26 @@ public class GMWorldGenTrees extends WorldGenerator {
 						radius = 0;
 					}
 					
-					if (yOffset >= y + treeHeight + 1 - 2) {
+					if (yOffset >= y + treeHeight + 1 - 2) { 
 						radius = 2;
 					}
-					
-					if (yOffset >= 0 && yOffset < worldHeight) {
 						
-						for (xOffset = x - radius; xOffset <= x + radius; ++xOffset) {
+					for (xOffset = x - radius; xOffset <= x + radius; ++xOffset) {
 							
-							for (zOffset = z - radius; zOffset <= z + radius; ++zOffset) {
+						for (zOffset = z - radius; zOffset <= z + radius; ++zOffset) {
 								
-								blockId = world.getBlockId(xOffset, yOffset, zOffset);
-								block = Block.blocksList[blockId];
+							blockId = world.getBlockId(xOffset, yOffset, zOffset);
+							block = Block.blocksList[blockId];
 								
-								if (block != null && !block.isLeaves(world, xOffset, yOffset, zOffset) &&
-										!block.isAirBlock(world, xOffset, yOffset, zOffset) &&
-										!block.canBeReplacedByLeaves(world, xOffset, yOffset, zOffset)) {
+							if (block != null && !block.isLeaves(world, xOffset, yOffset, zOffset) &&
+									!block.isAirBlock(world, xOffset, yOffset, zOffset) &&
+									!block.canBeReplacedByLeaves(world, xOffset, yOffset, zOffset)) {
 									
-									return false;
-								}
+								return false;
 							}
 						}
 					}
-					else {
-						return false;
-					}
+					
 				}
 				
 				blockId = world.getBlockId(x, y - 1, z);
@@ -204,8 +197,7 @@ public class GMWorldGenTrees extends WorldGenerator {
 			int yOffset;
 			int zOffset;
 
-			if (block != null && block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, ((BlockSapling)GreenMod.blockSapling)) &&
-					y < worldHeight - treeHeight - 1) {
+			if (block != null && block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, ((BlockSapling)GreenMod.blockSapling))) {
 				
 				for (yOffset = y; yOffset <= y + treeHeight + 1; ++yOffset) {
 					
@@ -218,27 +210,21 @@ public class GMWorldGenTrees extends WorldGenerator {
 					if (yOffset >= y + treeHeight + 1 - 2) {
 						radius = 5;
 					}
-				
-					if (yOffset >= 0 && yOffset < worldHeight) {
 					
-						for (xOffset = x - radius; xOffset <= x + radius; ++xOffset) {
+					for (xOffset = x - radius; xOffset <= x + radius; ++xOffset) {
 						
-							for (zOffset = z - radius; zOffset <= z + radius; ++zOffset) {
+						for (zOffset = z - radius; zOffset <= z + radius; ++zOffset) {
 							
-								blockId = world.getBlockId(xOffset, yOffset, zOffset);
-								block = Block.blocksList[blockId];
+							blockId = world.getBlockId(xOffset, yOffset, zOffset);
+							block = Block.blocksList[blockId];
 							
-								if (block != null && !block.isLeaves(world, xOffset, yOffset, zOffset) &&
-										!block.isAirBlock(world, xOffset, yOffset, zOffset) &&
-										!block.canBeReplacedByLeaves(world, xOffset, yOffset, zOffset)) {
+							if (block != null && !block.isLeaves(world, xOffset, yOffset, zOffset) &&
+									!block.isAirBlock(world, xOffset, yOffset, zOffset) &&
+									!block.canBeReplacedByLeaves(world, xOffset, yOffset, zOffset)) {
 								
-									return false;
-								}
+								return false;
 							}
 						}
-					}
-					else {
-						return false;
 					}
 				}
 				
